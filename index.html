@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link href="Styles.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" rel="stylesheet">
+        
+    </head>
+
+    <body>
+
+        <main>
+            <form action="">
+                <div class ="input-wrapper">
+                <input type="text" autocomplete="off" id="valueSearch">
+                <button>
+                    <i class="fa-solid fa-location-dot"></i>
+                </button>
+                </div>
+            </form>
+
+            <section class="result">
+                <figure class="area" id="city">
+                    <figcaption>Seattle</figcaption>
+                    <img src="https://flagsapi.com/US/shiny/32.png">
+                </figure>
+                <figure class="weatherE">
+                    <img id="weatherIcon" src="http://openweathermap.org/img/wn/10d@4x.png">
+
+                </figure>
+                <figure class="degrees">
+                    <span>30</span>
+                    <sup>o</sup>
+                </figure>
+
+                <p class="description">Overcast Clouds</p>
+
+                <ul>
+                    <li>
+                        <span class="windspeed">Windspeed</span>
+                        <span id="windspeed">89mph</span>
+                    </li>
+                   
+                    <li>
+                        <span>Humidity</span>
+                        <span id="humidity">55</span>%
+                    </li>
+
+                    <li>
+                        <span>Wind Direction</span>
+                        <span class="windD">SE</span>
+                    </li>
+                </ul>
+            </section>
+        </main>
+
+    <script src="app.js" rel="javascript"></script>
+    </body>
+
+
+</html>
