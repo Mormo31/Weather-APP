@@ -1,0 +1,121 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    height: 100vh;
+    margin:0;
+    background-image: linear-gradient(#333333, black);
+    
+}
+
+div.input-wrapper {
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+
+input {
+  flex:1;
+  width: 70%;               /* or 100% if you want full width inside .input-wrapper */
+  height: 50px;
+  font-size: 16px;
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: none;
+  box-sizing: border-box;
+  margin: 0;
+  margin-left: 10%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: rgba(0, 0, 0, 0.397);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  color: white;
+  outline: 1px solid rgba(173, 172, 172, 0.5)
+}
+
+button {
+  height: 50px;
+  padding: 0 15px;
+  border: none;
+  background: white;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+
+figure.area{
+    padding-top: 30px;
+    
+}
+main {
+    background-color: rgba(228, 220, 220, 0.301);
+    width: 450px;
+    height: 770px;
+    border-radius: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 300px;
+    margin-bottom: 300px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 50px rgba(247, 246, 246, 0.5);
+    color: white;
+    outline: 1px solid rgba(161, 161, 161, 0.5)
+
+}
+
+main .result{
+    text-align: center;
+    font-size: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+main .degrees{
+    font-size: 1.5em;
+}
+
+sup{
+    font-size: 30px;
+    margin-left: -10px;
+    
+}
+
+main .description{
+    padding: 10px 0 30px;
+}
+
+main ul{
+    list-style: none;
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background-color: rgba(0, 0, 0, 0.425);
+    border-radius: 10px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    
+    
+}
+
+img#weatherIcon {
+    padding-top: 12%;
+    padding-bottom: 12%;
+}
+
+main .windspeed {
+    font-size: 25px;
+}
+
+
+
+li .windD{
+    font-size: 30px;
+    text-align: center;
+    padding: 8px 8px 8px 8px;
+}
+
+main .temperature {
+    filter: drop-shadow(0 10px 50px white);
+}
