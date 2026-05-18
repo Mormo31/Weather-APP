@@ -7,17 +7,21 @@ let windspeed = document.getElementById('windspeed');
 let humidity = document.getElementById('humidity');
 let windD = document.querySelector('.windD');
 let weatherIcon = document.getElementById('weatherIcon');
+let forcast = document.querySelector('.name');
 const form = document.querySelector('form')
 
 form.addEventListener('submit', async (event) => {
   event.preventDefault();          // ← prevent the reload
-  console.log('hello');
-  //alert('Hello');
-  await getWeatherForecast();      // ← fetch & render
+      
+  const searchedCity = valueSearch.value.trim();
+
+  if (searchedCity !==""){
+    await getWeatherForecast(searchedCity);
+  }
 });
 
- async function getWeatherForecast() {
-    const cityName = valueSearch.value;
+ async function getWeatherForecast(cityInput = valueSearch.value) {
+    const cityName = cityInput.trim();
     console.log("🔍 Searching for city:", cityName);
 
     try {
@@ -40,6 +44,7 @@ form.addEventListener('submit', async (event) => {
       console.log("🌤 Today's Forecast:", today);
 
       city.querySelector("figcaption").innerText = cityName;
+      forcast.innerText = today.name + ":";
       weatherIcon.src = today.icon;
       degrees.querySelector("span").innerText = today.temperature;
       description.innerText = today.shortForecast;
@@ -51,3 +56,66 @@ form.addEventListener('submit', async (event) => {
       console.error("❌ Error:", err);
     }
   }
+
+
+  async function autoDetectLocation() {
+
+  if (!navigator.geolocation) {
+    fallbackCity();
+    return;
+  }
+
+  navigator.geolocation.getCurrentPosition(async (position) => {
+
+    const lat = position.coords.latitude;
+    const lon = position.coords.longitude;
+
+    console.log("📍 User Coordinates:", lat, lon);
+
+    try {
+
+      const geoRes = await fetch(
+        `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`
+      );
+
+      const geoData = await geoRes.json();
+
+      const detectedCity =
+        geoData.address.city ||
+        geoData.address.town ||
+        geoData.address.village;
+
+      console.log("🏙 Detected city:", detectedCity);
+
+      //valueSearch.value = detectedCity;
+
+      await getWeatherForecast(detectedCity);
+
+    } catch (err) {
+
+      console.log("Location lookup failed");
+
+      fallbackCity();
+
+    }
+
+  }, () => {
+
+    fallbackCity();
+
+  });
+
+}
+
+
+
+function fallbackCity() {
+
+  getWeatherForecast("Dallas");
+
+}
+
+
+
+// RUN WHEN PAGE LOADS
+autoDetectLocation();
